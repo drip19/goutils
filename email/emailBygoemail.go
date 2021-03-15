@@ -30,7 +30,7 @@ func SendMail(eMessage EMessage, user, password string) error {
 	m.SetHeader("From", "NOTICE ME"+"<"+mailConn["user"]+">") //这种方式可以添加别名，即“XD Game”， 也可以直接用<code>m.SetHeader("From",mailConn["user"])</code> 读者可以自行实验下效果
 	m.SetHeader("To", eMessage.To...)                         //发送给多个用户
 	m.SetHeader("Subject", eMessage.Subject)                  //设置邮件主题
-	m.SetBody("text/html", eMessage.Body)                     //设置邮件正文
+	m.SetBody("text/plain", eMessage.Body)                     //设置邮件正文
 
 	d := gomail.NewDialer(mailConn["host"], port, mailConn["user"], mailConn["pass"])
 
